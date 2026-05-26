@@ -6,7 +6,7 @@
     <meta name="description" content="@yield('meta_description', 'Bodrum\'un kalbinde eşsiz Ege lezzetleri. Harem Restaurant — deniz manzaralı terasımızda unutulmaz bir deneyim.')">
     <title>@yield('title', 'Harem Restaurant') — Bodrum</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22 fill=%22%23C9A96E%22 font-weight=%22bold%22 font-family=%22serif%22>H</text></svg>">
-    <link rel="stylesheet" href="/css/harem.css?v={{ time() }}">
+    <link rel="stylesheet" href="{{ asset('css/harem.css') }}?v={{ time() }}">
     @yield('head')
 </head>
 <body>

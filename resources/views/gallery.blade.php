@@ -28,7 +28,7 @@
                     preload="metadata"
                     poster="/images/ambiance-1.png"
                 >
-                    <source src="/videos/ambiyans1.mp4" type="video/mp4">
+                    <source src="{{ asset('videos/ambiyans1.mp4') }}" type="video/mp4">
                     {{ __('Tarayıcınız video desteklemiyor.') }}
                 </video>
                 <div class="video-card-label">
@@ -44,7 +44,7 @@
                     preload="metadata"
                     poster="/images/ambiance-2.png"
                 >
-                    <source src="/videos/ambiyans2.mp4" type="video/mp4">
+                    <source src="{{ asset('videos/ambiyans2.mp4') }}" type="video/mp4">
                     {{ __('Tarayıcınız video desteklemiyor.') }}
                 </video>
                 <div class="video-card-label">
@@ -82,7 +82,7 @@
             @if($images->count() > 0)
                 @foreach($images as $index => $img)
                 <div class="gallery-item {{ $index % 5 === 0 ? 'wide' : '' }} fade-up">
-                    <img src="/images/{{ $img->image }}" alt="{{ __($img->title ?? 'Harem Restaurant') }}" loading="lazy">
+                    <img src="{{ asset('images/{{ $img->image }}') }}" alt="{{ __($img->title ?? 'Harem Restaurant') }}" loading="lazy">
                     <div class="gallery-overlay">
                         <span class="gallery-overlay-text">{{ __($img->title ?? 'Harem Restaurant') }}</span>
                     </div>
@@ -95,7 +95,7 @@
                 @endphp
                 @if(file_exists($filePath))
                 <div class="gallery-item {{ $index === 0 ? 'wide' : '' }} fade-up">
-                    <img src="/images/{{ $foto['img'] }}" alt="{{ $foto['title'] }}" loading="lazy">
+                    <img src="{{ asset('images/{{ $foto['img'] }}') }}" alt="{{ $foto['title'] }}" loading="lazy">
                     <div class="gallery-overlay">
                         <span class="gallery-overlay-text">{{ $foto['title'] }}</span>
                     </div>

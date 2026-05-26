@@ -68,7 +68,7 @@
     <div class="container">
         <div class="about-preview-grid">
             <div class="about-image-frame fade-up">
-                <img src="/images/interior.png" alt="Harem Restaurant İç Mekan" class="about-image-main">
+                <img src="{{ asset('images/interior.png') }}" alt="Harem Restaurant İç Mekan" class="about-image-main">
                 <div class="about-image-badge">
                     <span class="num">2008</span>
                     <span class="lbl">Bodrum'da</span>
@@ -132,7 +132,7 @@
             @if($galleryImages->count() > 0)
                 @foreach($galleryImages->take(5) as $index => $img)
                 <div class="gallery-item {{ $index === 0 ? 'wide' : '' }} fade-up">
-                    <img src="/images/{{ $img->image }}" alt="{{ __($img->title ?? 'Harem Restaurant') }}">
+                    <img src="{{ asset('images/{{ $img->image }}') }}" alt="{{ __($img->title ?? 'Harem Restaurant') }}">
                     <div class="gallery-overlay">
                         <span class="gallery-overlay-text">{{ __($img->title ?? 'Harem Restaurant') }}</span>
                     </div>
@@ -140,19 +140,19 @@
                 @endforeach
             @else
                 <div class="gallery-item wide fade-up">
-                    <img src="/images/gallery-terrace.png" alt="{{ __('Deniz Manzaralı Teras') }}">
+                    <img src="{{ asset('images/gallery-terrace.png') }}" alt="{{ __('Deniz Manzaralı Teras') }}">
                     <div class="gallery-overlay"><span class="gallery-overlay-text">{{ __('Deniz Manzaralı Teras') }}</span></div>
                 </div>
                 <div class="gallery-item fade-up">
-                    <img src="/images/interior.png" alt="{{ __('Zarif İç Mekan') }}">
+                    <img src="{{ asset('images/interior.png') }}" alt="{{ __('Zarif İç Mekan') }}">
                     <div class="gallery-overlay"><span class="gallery-overlay-text">{{ __('Zarif İç Mekan') }}</span></div>
                 </div>
                 <div class="gallery-item fade-up">
-                    <img src="/images/hero.png" alt="{{ __('Restoran') }}">
+                    <img src="{{ asset('images/hero.png') }}" alt="{{ __('Restoran') }}">
                     <div class="gallery-overlay"><span class="gallery-overlay-text">{{ __('Bodrum\'da Bir Akşam') }}</span></div>
                 </div>
                 <div class="gallery-item fade-up">
-                    <img src="/images/gallery-terrace.png" alt="{{ __('Açık Teras') }}">
+                    <img src="{{ asset('images/gallery-terrace.png') }}" alt="{{ __('Açık Teras') }}">
                     <div class="gallery-overlay"><span class="gallery-overlay-text">{{ __('Açık Teras') }}</span></div>
                 </div>
             @endif

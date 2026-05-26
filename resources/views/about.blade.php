@@ -27,7 +27,7 @@
                 </p>
             </div>
             <div class="about-image-frame fade-up">
-                <img src="/images/interior.png" alt="{{ __('Harem Restaurant İç Mekan') }}" class="about-image-main">
+                <img src="{{ asset('images/interior.png') }}" alt="{{ __('Harem Restaurant İç Mekan') }}" class="about-image-main">
                 <div class="about-image-badge">
                     <span class="num">★4.9</span>
                     <span class="lbl">{{ __('Google Puanı') }}</span>
