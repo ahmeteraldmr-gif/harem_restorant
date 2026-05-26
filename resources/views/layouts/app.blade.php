@@ -17,13 +17,13 @@
             background: transparent;
             border: 1px solid rgba(255,255,255,0.2);
             color: var(--gold);
-            padding: 0.4rem 0.8rem;
+            padding: 0.3rem 0.6rem;
             border-radius: var(--radius-sm);
             cursor: pointer;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
             transition: var(--transition);
         }
         .lang-dropdown-btn:hover {
