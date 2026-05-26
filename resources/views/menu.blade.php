@@ -52,7 +52,7 @@
                     <div class="menu-item-row">
                         <div class="menu-item-row-img">
                             @if($item->image && file_exists(public_path('images/'.$item->image)))
-                                <img src="{{ asset('images/{{ $item->image }}') }}" alt="{{ $item->name }}">
+                                <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->name }}">
                             @else
                                 <div class="menu-item-row-placeholder">{{ $category->icon }}</div>
                             @endif

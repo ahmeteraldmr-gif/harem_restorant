@@ -132,7 +132,7 @@
             @if($galleryImages->count() > 0)
                 @foreach($galleryImages->take(5) as $index => $img)
                 <div class="gallery-item {{ $index === 0 ? 'wide' : '' }} fade-up">
-                    <img src="{{ asset('images/{{ $img->image }}') }}" alt="{{ __($img->title ?? 'Harem Restaurant') }}">
+                    <img src="{{ asset('images/' . $img->image) }}" alt="{{ __($img->title ?? 'Harem Restaurant') }}">
                     <div class="gallery-overlay">
                         <span class="gallery-overlay-text">{{ __($img->title ?? 'Harem Restaurant') }}</span>
                     </div>

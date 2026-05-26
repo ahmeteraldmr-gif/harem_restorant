@@ -42,7 +42,7 @@
         <div class="admin-gallery-grid">
             @forelse($images as $img)
             <div style="position:relative; border-radius:var(--radius-sm); overflow:hidden; border:1px solid #E2E8F0;">
-                <img src="{{ asset('images/{{ $img->image }}') }}" alt="{{ $img->title }}" style="width:100%; height:120px; object-fit:cover;">
+                <img src="{{ asset('images/' . $img->image) }}" alt="{{ $img->title }}" style="width:100%; height:120px; object-fit:cover;">
                 <div style="padding:0.5rem; background:var(--white);">
                     <div style="font-size:0.75rem; font-weight:600; color:var(--navy); margin-bottom:0.2rem;">{{ $img->title ?? 'Başlıksız' }}</div>
                     <div style="font-size:0.65rem; color:#94A3B8; margin-bottom:0.5rem;">{{ $img->category }}</div>

@@ -82,7 +82,7 @@
             @if($images->count() > 0)
                 @foreach($images as $index => $img)
                 <div class="gallery-item {{ $index % 5 === 0 ? 'wide' : '' }} fade-up">
-                    <img src="{{ asset('images/{{ $img->image }}') }}" alt="{{ __($img->title ?? 'Harem Restaurant') }}" loading="lazy">
+                    <img src="{{ asset('images/' . $img->image) }}" alt="{{ __($img->title ?? 'Harem Restaurant') }}" loading="lazy">
                     <div class="gallery-overlay">
                         <span class="gallery-overlay-text">{{ __($img->title ?? 'Harem Restaurant') }}</span>
                     </div>
@@ -95,7 +95,7 @@
                 @endphp
                 @if(file_exists($filePath))
                 <div class="gallery-item {{ $index === 0 ? 'wide' : '' }} fade-up">
-                    <img src="{{ asset('images/{{ $foto['img'] }}') }}" alt="{{ $foto['title'] }}" loading="lazy">
+                    <img src="{{ asset('images/' . $foto['img']) }}" alt="{{ $foto['title'] }}" loading="lazy">
                     <div class="gallery-overlay">
                         <span class="gallery-overlay-text">{{ $foto['title'] }}</span>
                     </div>
