@@ -189,7 +189,7 @@ h4 { font-size: 1.55rem; }
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 1.75rem 0;
+    padding: 0.6rem 0;
     transition: padding 0.5s cubic-bezier(0.3, 1, 0.2, 1), background 0.5s ease, border-color 0.5s ease;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     background: transparent;
@@ -199,7 +199,7 @@ h4 { font-size: 1.55rem; }
     background: rgba(13, 22, 32, 0.82) !important;
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    padding: 0.9rem 0;
+    padding: 0.4rem 0;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
     border-bottom: 1px solid rgba(201, 169, 110, 0.15);
 }
@@ -641,7 +641,7 @@ h4 { font-size: 1.55rem; }
 .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/hero.png');
+    background-image: url('../images/hero.png');
     background-size: cover;
     background-position: center;
     transform-origin: center;
