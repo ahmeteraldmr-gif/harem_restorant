@@ -7,6 +7,92 @@
     <title>@yield('title', 'Harem Restaurant') — Bodrum</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22 fill=%22%23C9A96E%22 font-weight=%22bold%22 font-family=%22serif%22>H</text></svg>">
     <link rel="stylesheet" href="{{ asset('css/harem.css') }}?v={{ time() }}">
+    <style>
+        /* Language Dropdown Styles */
+        .desktop-lang-switcher {
+            position: relative;
+            margin-right: 1rem;
+        }
+        .lang-dropdown-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--gold);
+            padding: 0.4rem 0.8rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+        .lang-dropdown-btn:hover {
+            border-color: var(--gold);
+            background: rgba(201, 169, 110, 0.1);
+        }
+        .lang-dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--navy);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-sm);
+            min-width: 120px;
+            margin-top: 0.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            z-index: 100;
+        }
+        .desktop-lang-switcher:hover .lang-dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .lang-dropdown-content a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .lang-dropdown-content a:hover,
+        .lang-dropdown-content a.active {
+            background: rgba(255,255,255,0.05);
+            color: var(--gold);
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-lang-switcher {
+                display: none !important;
+            }
+        }
+        
+        .mobile-lang-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            width: 100%;
+        }
+        .mobile-lang-grid a {
+            display: block;
+            text-align: center;
+            padding: 0.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        .mobile-lang-grid a.active {
+            border-color: var(--gold);
+            color: var(--gold) !important;
+            background: rgba(201, 169, 110, 0.1);
+        }
+    </style>
     @yield('head')
 </head>
 <body>
@@ -43,16 +129,22 @@
             </ul>
 
             <div class="navbar-actions">
-                <div class="lang-switcher" style="display:flex; gap:0.5rem; margin-right: 1rem; align-items:center;">
-                    <a href="{{ route('lang.switch', 'tr') }}" style="color: {{ app()->getLocale() == 'tr' ? 'var(--gold)' : 'var(--white)' }}; text-decoration: none; font-weight: bold; font-size: 0.9rem;">TR</a>
-                    <span style="color: rgba(255,255,255,0.3);">|</span>
-                    <a href="{{ route('lang.switch', 'en') }}" style="color: {{ app()->getLocale() == 'en' ? 'var(--gold)' : 'var(--white)' }}; text-decoration: none; font-weight: bold; font-size: 0.9rem;">EN</a>
-                    <span style="color: rgba(255,255,255,0.3);">|</span>
-                    <a href="{{ route('lang.switch', 'es') }}" style="color: {{ app()->getLocale() == 'es' ? 'var(--gold)' : 'var(--white)' }}; text-decoration: none; font-weight: bold; font-size: 0.9rem;">ES</a>
-                    <span style="color: rgba(255,255,255,0.3);">|</span>
-                    <a href="{{ route('lang.switch', 'ar') }}" style="color: {{ app()->getLocale() == 'ar' ? 'var(--gold)' : 'var(--white)' }}; text-decoration: none; font-weight: bold; font-size: 0.9rem;">AR</a>
-                    <span style="color: rgba(255,255,255,0.3);">|</span>
-                    <a href="{{ route('lang.switch', 'ru') }}" style="color: {{ app()->getLocale() == 'ru' ? 'var(--gold)' : 'var(--white)' }}; text-decoration: none; font-weight: bold; font-size: 0.9rem;">RU</a>
+                <div class="desktop-lang-switcher">
+                    @php
+                        $locales = ['tr' => 'Türkçe', 'en' => 'English', 'es' => 'Español', 'ar' => 'العربية', 'ru' => 'Русский'];
+                        $currentLocale = app()->getLocale();
+                    @endphp
+                    <button class="lang-dropdown-btn">
+                        {{ strtoupper($currentLocale) }}
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="lang-dropdown-content">
+                        @foreach($locales as $code => $name)
+                            <a href="{{ route('lang.switch', $code) }}" class="{{ $currentLocale == $code ? 'active' : '' }}">
+                                {{ $name }} ({{ strtoupper($code) }})
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
                 <a href="{{ route('rezervasyon') }}" class="navbar-cta-btn">{{ __('Rezervasyon Yap') }}</a>
                 <button class="hamburger" id="hamburger" aria-label="Menüyü aç">
@@ -82,13 +174,17 @@
             <li style="--i:3;"><a href="{{ route('hakkimizda') }}" class="{{ request()->routeIs('hakkimizda') ? 'active' : '' }}">{{ __('Hakkımızda') }}</a></li>
             <li style="--i:4;"><a href="{{ route('galeri') }}" class="{{ request()->routeIs('galeri') ? 'active' : '' }}">{{ __('Galeri') }}</a></li>
             <li style="--i:5;"><a href="{{ route('iletisim') }}" class="{{ request()->routeIs('iletisim') ? 'active' : '' }}">{{ __('İletişim') }}</a></li>
-            <li style="--i:6; margin-top: 1rem;">
-                <div style="display:flex; gap:1rem; justify-content:center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; flex-wrap:wrap;">
-                    <a href="{{ route('lang.switch', 'tr') }}" style="color: {{ app()->getLocale() == 'tr' ? 'var(--gold)' : 'var(--white)' }};">TR</a>
-                    <a href="{{ route('lang.switch', 'en') }}" style="color: {{ app()->getLocale() == 'en' ? 'var(--gold)' : 'var(--white)' }};">EN</a>
-                    <a href="{{ route('lang.switch', 'es') }}" style="color: {{ app()->getLocale() == 'es' ? 'var(--gold)' : 'var(--white)' }};">ES</a>
-                    <a href="{{ route('lang.switch', 'ar') }}" style="color: {{ app()->getLocale() == 'ar' ? 'var(--gold)' : 'var(--white)' }};">AR</a>
-                    <a href="{{ route('lang.switch', 'ru') }}" style="color: {{ app()->getLocale() == 'ru' ? 'var(--gold)' : 'var(--white)' }};">RU</a>
+            <li style="--i:6; margin-top: 1.5rem;">
+                <div class="mobile-lang-grid">
+                    @php
+                        $locales = ['tr' => 'TR', 'en' => 'EN', 'es' => 'ES', 'ar' => 'AR', 'ru' => 'RU'];
+                        $currentLocale = app()->getLocale();
+                    @endphp
+                    @foreach($locales as $code => $name)
+                        <a href="{{ route('lang.switch', $code) }}" class="{{ $currentLocale == $code ? 'active' : '' }}" style="color: var(--white);">
+                            {{ $name }}
+                        </a>
+                    @endforeach
                 </div>
             </li>
         </ul>
